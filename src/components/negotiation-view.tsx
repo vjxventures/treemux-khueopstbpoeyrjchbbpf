@@ -164,6 +164,35 @@ export function NegotiationView({
             </div>
           </div>
         </div>
+
+        {/* Deal progress bar */}
+        {(buyerOffer > 0 || isNegotiating) && (
+          <div className="mt-3">
+            <div className="relative h-2 w-full rounded-full bg-secondary overflow-hidden">
+              {/* Buyer position (from left) */}
+              <div
+                className="absolute left-0 top-0 h-full rounded-full bg-haggle-green transition-all duration-500"
+                style={{
+                  width: `${listing.askingPrice > 0 ? (buyerOffer / listing.askingPrice) * 100 : 0}%`,
+                }}
+              />
+              {/* Seller position (from right) */}
+              <div
+                className="absolute right-0 top-0 h-full rounded-full bg-haggle-amber transition-all duration-500"
+                style={{
+                  width: `${listing.askingPrice > 0 ? ((listing.askingPrice - sellerOffer) / listing.askingPrice) * 100 : 0}%`,
+                }}
+              />
+              {deal && (
+                <div className="absolute inset-0 bg-haggle-green/30 animate-pulse rounded-full" />
+              )}
+            </div>
+            <div className="mt-1 flex justify-between text-[10px] font-mono text-muted-foreground">
+              <span>$0</span>
+              <span>${listing.askingPrice}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Messages area */}

@@ -105,38 +105,85 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background noise-bg">
-      {/* Hero / Header */}
+      {/* Hero */}
       <header className="relative overflow-hidden border-b border-border">
-        {/* Gradient accent */}
+        {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
-        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-primary/3 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
 
-        <div className="relative mx-auto max-w-5xl px-6 py-8">
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="flex items-center gap-3">
-                <h1 className="text-4xl font-bold tracking-tight">
-                  <span className="text-primary">H</span>aggle
-                </h1>
-                <Badge
-                  variant="outline"
-                  className="font-mono text-xs border-primary/30 text-primary"
-                >
-                  AI-NATIVE
-                </Badge>
+        <div className="relative mx-auto max-w-5xl px-6 pt-10 pb-8">
+          {/* Top bar */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight">
+                <span className="text-primary">H</span>aggle
+              </h1>
+              <Badge
+                variant="outline"
+                className="font-mono text-[10px] border-primary/30 text-primary tracking-widest"
+              >
+                AI-NATIVE
+              </Badge>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground font-mono">
+                <span className="inline-block h-2 w-2 rounded-full bg-haggle-green animate-pulse" />
+                {listings.length} LIVE LISTINGS
               </div>
-              <p className="mt-2 max-w-lg text-muted-foreground">
-                The marketplace where AI agents negotiate for you. Describe what
-                you want to sell or buy, and let our agents handle the rest.
+            </div>
+          </div>
+
+          {/* Hero content */}
+          <div className="max-w-2xl">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1]">
+              Stop haggling.
+              <br />
+              <span className="text-primary">Let AI do it for you.</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-xl leading-relaxed">
+              The marketplace where AI agents negotiate on your behalf. Pick an item,
+              set your budget, and watch two AI agents battle for the best deal in real-time.
+            </p>
+          </div>
+
+          {/* How it works */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="group rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-4 transition-all hover:border-primary/20">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 font-mono text-sm font-bold text-primary">
+                  01
+                </div>
+                <h3 className="font-semibold text-sm">List or Browse</h3>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Describe your item in plain English &mdash; AI generates the
+                listing with smart pricing. Or browse and find what you need.
               </p>
             </div>
-            <div className="hidden sm:block text-right">
-              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-                Active Listings
+            <div className="group rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-4 transition-all hover:border-primary/20">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 font-mono text-sm font-bold text-primary">
+                  02
+                </div>
+                <h3 className="font-semibold text-sm">Set Your Terms</h3>
               </div>
-              <div className="font-mono text-3xl font-bold text-primary">
-                {listings.length}
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Tell your AI agent your budget and negotiation strategy. It handles
+                the rest &mdash; persuasion, counter-offers, and deal-making.
+              </p>
+            </div>
+            <div className="group rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-4 transition-all hover:border-primary/20">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 font-mono text-sm font-bold text-primary">
+                  03
+                </div>
+                <h3 className="font-semibold text-sm">Watch the Deal</h3>
               </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Watch two AI agents negotiate in real-time. Offers fly, counters
+                land, and deals close &mdash; all in seconds.
+              </p>
             </div>
           </div>
         </div>
