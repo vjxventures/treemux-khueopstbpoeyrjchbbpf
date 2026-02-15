@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { NegotiationMessage, Listing } from "@/lib/types";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface NegotiationViewProps {
   listing: Listing;
@@ -168,8 +167,8 @@ export function NegotiationView({
       </div>
 
       {/* Messages area */}
-      <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-        <div className="space-y-4 pb-4">
+      <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
+        <div className="mx-auto max-w-2xl space-y-4 pb-4">
           {messages.map((msg, i) => (
             <MessageBubble key={i} message={msg} index={i} />
           ))}
@@ -202,7 +201,7 @@ export function NegotiationView({
             </div>
           )}
         </div>
-      </ScrollArea>
+      </div>
 
       {/* Deal result banner */}
       {isComplete && deal && (
