@@ -15,6 +15,7 @@ import { MetricsPanel } from "./MetricsPanel";
 import { LogStream } from "./LogStream";
 import { Timeline } from "./Timeline";
 import { AgentChat } from "./AgentChat";
+import { ServiceGraph } from "./ServiceGraph";
 
 export function IncidentDetail({
   incidentId,
@@ -144,24 +145,10 @@ export function IncidentDetail({
             {activeTab === "overview" && (
               <>
                 <MetricsPanel metrics={incident.metrics} />
-                {/* Affected Services */}
-                <div className="space-y-3">
-                  <h3 className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em] flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-destructive" />
-                    Affected Services
-                  </h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {incident.affectedServices.map((svc) => (
-                      <span
-                        key={svc}
-                        className="inline-flex items-center gap-1.5 px-2 py-1 rounded border border-destructive/20 bg-destructive/5 text-[11px] font-mono text-destructive/80"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 status-pulse" />
-                        {svc}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <ServiceGraph
+                  services={incident.affectedServices}
+                  primaryService={incident.service}
+                />
                 <LogStream logs={incident.logs.slice(0, 5)} />
               </>
             )}
